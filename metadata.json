@@ -1,0 +1,6 @@
+{
+  "name": "EduAI Master",
+  "description": "Mobile-first AI Adaptive Learning System with personalized mastery paths, dynamic 4-tier difficulty scaling, pedagogical scaffolding, real-time revision guides, practice quizzes, exam simulator, and board curriculum management.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

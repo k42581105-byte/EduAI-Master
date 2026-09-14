@@ -1,0 +1,197 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Account",
+      "description": "User authentication profile and role assignment",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "role": { "type": "string", "enum": ["student", "parent", "teacher"] },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" },
+        "linkedStudentEmail": { "type": "string" },
+        "classGrade": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "profiles": {
+      "title": "Student Profile",
+      "description": "Educational stats, target exam, board, and avatar details",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "targetExam": { "type": "string" },
+        "board": { "type": "string" },
+        "xp": { "type": "number" },
+        "level": { "type": "number" },
+        "streakDays": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "name"]
+    },
+    "books": {
+      "title": "Textbook & Material",
+      "description": "Digital books and curriculum metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "grade": { "type": "string" },
+        "chapterCount": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "subject"]
+    },
+    "notes": {
+      "title": "Study Notes",
+      "description": "User generated or AI summarized study notes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "content": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "content"]
+    },
+    "conversations": {
+      "title": "AI Conversations",
+      "description": "Ask AI chat histories and prompt logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "messages": { "type": "array" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId"]
+    },
+    "scans": {
+      "title": "Photo Solver Scans",
+      "description": "Captured question images and AI step-by-step solutions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "recognizedText": { "type": "string" },
+        "solution": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId"]
+    },
+    "quizzes": {
+      "title": "Quizzes & Attempts",
+      "description": "Generated quizzes, practice scores, and submission results",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "subject": { "type": "string" },
+        "score": { "type": "number" },
+        "totalQuestions": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "score"]
+    },
+    "exams": {
+      "title": "Mock Exams",
+      "description": "Full-length board practice test papers and time logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "examTitle": { "type": "string" },
+        "subject": { "type": "string" },
+        "scorePercentage": { "type": "number" },
+        "durationMins": { "type": "number" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["id", "userId"]
+    },
+    "studyPlans": {
+      "title": "Study Plans",
+      "description": "Daily target schedules and revision tasks",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "tasks": { "type": "array" },
+        "weeklyTargetHours": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "progress": {
+      "title": "Student Analytics",
+      "description": "Subject mastery levels, weak topics, and study activity logs",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "subjectMastery": { "type": "object" },
+        "weakTopics": { "type": "array" },
+        "totalStudyHours": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "xp": {
+      "title": "XP Logs",
+      "description": "Gamification point transactions and daily history",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "totalXp": { "type": "number" },
+        "history": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "achievements": {
+      "title": "Unlocked Achievements",
+      "description": "Badge unlocks and reward history",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "unlockedBadges": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "mistakes": {
+      "title": "Mistake Book Records",
+      "description": "Smart revision mistake notes, quiz error records, and retest logs",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "mistakeSheets": { "type": "array" },
+        "errorLogs": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "preferences": {
+      "title": "User Preferences",
+      "description": "Theme, language, reminder schedule, and notification settings",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "theme": { "type": "string" },
+        "language": { "type": "string" },
+        "notificationPrefs": { "type": "object" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["userId"]
+    }
+  }
+}
